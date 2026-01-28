@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>究极无敌1104</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #4a148c);
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+        
+        .password-section {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .password-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .password-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px 20px;
+            border: 2px solid #4a148c;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .password-input:focus {
+            border-color: #ff7e5f;
+            box-shadow: 0 0 15px rgba(255, 126, 95, 0.5);
+        }
+        
+        .password-btn {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+        }
+        
+        .password-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 126, 95, 0.6);
+        }
+        
+        .password-btn:active {
+            transform: translateY(0);
+        }
+        
+        .hidden-content {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            animation: fadeIn 1s;
+        }
+        
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .content-header h2 {
+            color: #feb47b;
+            font-size: 1.8rem;
+        }
+        
+        .lock-btn {
+            background-color: rgba(255, 126, 95, 0.2);
+            border: 1px solid #ff7e5f;
+            color: #ff7e5f;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .lock-btn:hover {
+            background-color: rgba(255, 126, 95, 0.4);
+        }
+        
+        .content-body {
+            line-height: 1.8;
+            font-size: 1.2rem;
+        }
+        
+        .content-body p {
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .error {
+            background-color: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff4d4d;
+            color: #ff9999;
+        }
+        
+        .success {
+            background-color: rgba(0, 255, 0, 0.1);
+            border: 1px solid #66ff66;
+            color: #99ff99;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hint {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+            text-align: center;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .password-input, .password-btn {
+                width: 100%;
+            }
+            
+            .content-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>一年又一年</h1>
+            <p class="subtitle">输入正确密码以查看隐藏内容</p >
+        </header>
+        
+        <div class="password-section">
+            <div class="password-form">
+                <input type="password" class="password-input" id="passwordInput" placeholder="请输入访问密码...">
+                <button class="password-btn" id="submitBtn">查看隐藏内容</button>
+                <div class="message" id="message"></div>
+            </div>
+        </div>
+        
+        <div class="hidden-content" id="hiddenContent">
+            <div class="content-header">
+                <h2>提前给兄弟们新年快乐</h2>
+                <button class="lock-btn" id="lockBtn">重新锁定内容</button>
+            </div>
+            <div class="content-body">
+                <p>人才公寓无敌三人组</p >
+        </div>
+        
+        <!-- <footer>
+            <p>© 2023 密码保护文字查看器 | 设计用于HBuliderX</p > -->
+        </footer>
+    </div>
+
+    <script>
+        // 设置密码
+        const correctPassword = "1104";
+        
+        // 获取DOM元素
+        const passwordInput = document.getElementById('passwordInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const hiddenContent = document.getElementById('hiddenContent');
+        const message = document.getElementById('message');
+        const lockBtn = document.getElementById('lockBtn');
+        
+        // 提交密码事件
+        submitBtn.addEventListener('click', checkPassword);
+        
+        // 按Enter键也可以提交
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        // 重新锁定内容
+        lockBtn.addEventListener('click', function() {
+            hiddenContent.style.display = 'none';
+            passwordInput.value = '';
+            message.style.display = 'none';
+            passwordInput.focus();
+        });
+        
+        // 检查密码函数
+        function checkPassword() {
+            const enteredPassword = passwordInput.value.trim();
+            
+            // 清空之前的消息
+            message.style.display = 'none';
+            message.className = 'message';
+            
+            // 检查密码是否为空
+            if (!enteredPassword) {
+                showMessage("请输入密码", "error");
+                return;
+            }
+            
+            // 验证密码
+            if (enteredPassword === correctPassword) {
+                // 密码正确，显示隐藏内容
+                hiddenContent.style.display = 'block';
+                showMessage("密码正确！已解锁隐藏内容", "success");
+                
+                // 滚动到内容区域
+                setTimeout(() => {
+                    hiddenContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            } else {
+                // 密码错误
+                showMessage("密码错误，请重试", "error");
+                passwordInput.value = '';
+                passwordInput.focus();
+                
+                // 添加错误效果
+                passwordInput.style.borderColor = '#ff4d4d';
+                setTimeout(() => {
+                    passwordInput.style.borderColor = '#4a148c';
+                }, 1000);
+            }
+        }
+        
+        // 显示消息函数
+        function showMessage(text, type) {
+            message.textContent = text;
+            message.className = `message ${type}`;
+            message.style.display = 'block';
+        }
+        
+        // 初始聚焦到密码输入框
+        window.onload = function() {
+            passwordInput.focus();
+        };
+    </script>
+</body>
+</html>
